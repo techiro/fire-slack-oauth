@@ -1,0 +1,90 @@
+[debug] [2022-04-03T15:30:34.388Z] ----------------------------------------------------------------------
+[debug] [2022-04-03T15:30:34.389Z] Command:       /Users/hirokazu/.asdf/installs/nodejs/16.13.2/bin/node /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/bin/firebase serve
+[debug] [2022-04-03T15:30:34.390Z] CLI Version:   10.2.2
+[debug] [2022-04-03T15:30:34.390Z] Platform:      darwin
+[debug] [2022-04-03T15:30:34.390Z] Node Version:  v16.13.2
+[debug] [2022-04-03T15:30:34.391Z] Time:          Mon Apr 04 2022 00:30:34 GMT+0900 (日本標準時)
+[debug] [2022-04-03T15:30:34.391Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-03T15:30:34.438Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-03T15:30:34.439Z] > authorizing via signed-in user (tanaka.hirokazu@arakawa-lab.com)
+[debug] [2022-04-03T15:30:34.439Z] [iam] checking project slack-attend-system for permissions ["firebase.projects.get"]
+[debug] [2022-04-03T15:30:34.441Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions [none]
+[debug] [2022-04-03T15:30:34.441Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T15:30:35.183Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions 200
+[debug] [2022-04-03T15:30:35.183Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T15:30:35.184Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system [none]
+[debug] [2022-04-03T15:30:35.605Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system 200
+[debug] [2022-04-03T15:30:35.605Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system {"projectId":"slack-attend-system","projectNumber":"963472986985","displayName":"slack-attend-system","name":"projects/slack-attend-system","resources":{"hostingSite":"slack-attend-system","storageBucket":"slack-attend-system.appspot.com","locationId":"asia-east2"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from '/Users/hirokazu/Develop/TypeScript/fire-slack-oauth'...
+[info] 
+[debug] [2022-04-03T15:30:35.609Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/slack-attend-system/sites 
+[debug] [2022-04-03T15:30:35.759Z] Error: Cannot find module '/Users/hirokazu/Develop/TypeScript/fire-slack-oauth/src/package.json'
+Require stack:
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/controller.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/commands/database-get.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/commands/index.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/index.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/bin/firebase.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at FunctionsEmulator.getNodeBinary (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:529:21)
+    at FunctionsEmulator.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:192:39)
+    at Function.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/registry.js:16:24)
+    at EmulatorServer.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/emulatorServer.js:17:43)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async FunctionsServer.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/serve/functions.js:51:9)
+    at async Promise.all (index 1)
+    at async serve (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/serve/index.js:14:5)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2022-04-03T15:31:00.814Z] ----------------------------------------------------------------------
+[debug] [2022-04-03T15:31:00.815Z] Command:       /Users/hirokazu/.asdf/installs/nodejs/16.13.2/bin/node /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/bin/firebase serve
+[debug] [2022-04-03T15:31:00.816Z] CLI Version:   10.2.2
+[debug] [2022-04-03T15:31:00.816Z] Platform:      darwin
+[debug] [2022-04-03T15:31:00.816Z] Node Version:  v16.13.2
+[debug] [2022-04-03T15:31:00.817Z] Time:          Mon Apr 04 2022 00:31:00 GMT+0900 (日本標準時)
+[debug] [2022-04-03T15:31:00.817Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-03T15:31:00.863Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-03T15:31:00.863Z] > authorizing via signed-in user (tanaka.hirokazu@arakawa-lab.com)
+[debug] [2022-04-03T15:31:00.864Z] [iam] checking project slack-attend-system for permissions ["firebase.projects.get"]
+[debug] [2022-04-03T15:31:00.865Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions [none]
+[debug] [2022-04-03T15:31:00.866Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T15:31:01.624Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions 200
+[debug] [2022-04-03T15:31:01.624Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/slack-attend-system:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2022-04-03T15:31:01.625Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system [none]
+[debug] [2022-04-03T15:31:02.038Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system 200
+[debug] [2022-04-03T15:31:02.038Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/slack-attend-system {"projectId":"slack-attend-system","projectNumber":"963472986985","displayName":"slack-attend-system","name":"projects/slack-attend-system","resources":{"hostingSite":"slack-attend-system","storageBucket":"slack-attend-system.appspot.com","locationId":"asia-east2"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from '/Users/hirokazu/Develop/TypeScript/fire-slack-oauth'...
+[info] 
+[debug] [2022-04-03T15:31:02.042Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/slack-attend-system/sites 
+[debug] [2022-04-03T15:31:02.212Z] Error: Cannot find module '/Users/hirokazu/Develop/TypeScript/fire-slack-oauth/src/package.json'
+Require stack:
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/controller.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/commandUtils.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/commands/database-get.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/commands/index.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/index.js
+- /Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/bin/firebase.js
+    at Function.Module._resolveFilename (node:internal/modules/cjs/loader:933:15)
+    at Function.Module._load (node:internal/modules/cjs/loader:778:27)
+    at Module.require (node:internal/modules/cjs/loader:1005:19)
+    at require (node:internal/modules/cjs/helpers:102:18)
+    at FunctionsEmulator.getNodeBinary (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:529:21)
+    at FunctionsEmulator.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:192:39)
+    at Function.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/registry.js:16:24)
+    at EmulatorServer.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/emulator/emulatorServer.js:17:43)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+    at async FunctionsServer.start (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/serve/functions.js:51:9)
+    at async Promise.all (index 1)
+    at async serve (/Users/hirokazu/.asdf/installs/nodejs/16.13.2/.npm/lib/node_modules/firebase-tools/lib/serve/index.js:14:5)
+[error] 
+[error] Error: An unexpected error has occurred.
