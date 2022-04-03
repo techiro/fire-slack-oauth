@@ -1,5 +1,5 @@
 import express from 'express'
-const app = express();
+const app: express.Express = express();
 
 import { InstallProvider } from '@slack/oauth';
 
