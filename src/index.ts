@@ -1,9 +1,11 @@
-import express from 'express'
+import express from 'express';
 const app: express.Express = express();
 
 import { Installation, InstallationQuery, InstallProvider, Logger } from '@slack/oauth';
-import { NoWorkSpaceError } from 'model/slackError';
+
+// Error: Cannot find module 'model/slackError'
 import { CustomSlack } from 'model/user';
+import { NoWorkSpaceError } from 'model/slackError';
 import { SlackAppRepository } from 'repository/slackAppRepository';
 import { slackAppAuth, slackInfoDB } from 'plugins/firebase';
 
