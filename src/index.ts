@@ -1,7 +1,11 @@
 import express from 'express'
 const app: express.Express = express();
 
-import { InstallProvider } from '@slack/oauth';
+import { Installation, InstallationQuery, InstallProvider, Logger } from '@slack/oauth';
+import { NoWorkSpaceError } from 'model/slackError';
+import { CustomSlack } from 'model/user';
+import { SlackAppRepository } from 'repository/slackAppRepository';
+import { slackAppAuth, slackInfoDB } from 'plugins/firebase';
 
 // initialize the installProvider
 const installer = new InstallProvider({
@@ -9,6 +13,58 @@ const installer = new InstallProvider({
   clientSecret: process.env.SLACK_CLIENT_SECRET!,
   stateSecret: process.env.SLACK_STATE_SECRET!,
   renderHtmlForInstallPath: (url) => `<html><body><a href="${url}">Install my app!</a></body></html>`,
+  installationStore: {
+    storeInstallation: async (
+      installation: Installation<any, boolean>,
+      logger?: Logger | undefined
+    ) => {
+      new Promise<void>(async (resolve, reject) => {
+        if (
+          installation.isEnterpriseInstall &&
+          installation.enterprise !== undefined
+        ) {
+          // OrG 全体へのインストールに対応する場合
+          logger?.info("OrG 全体へのインストールに対応する場合");
+          reject(new NoWorkSpaceError());
+        }
+        if (installation.team !== undefined) {
+          // 単独のワークスペースへのインストールの場合
+          logger?.info("単独のワークスペースへのインストールの場合");
+          logger?.debug(installation.toString());
+          const data: CustomSlack.User = {
+            teamId: installation.team.id,
+            teamName: installation.team.name ?? "",
+            enterpriseId: installation.enterprise?.id ?? "",
+            enterpriseName: installation.enterprise?.name ?? "",
+            userToken: installation.user.token ?? "",
+            userId: installation.user.id,
+          };
+          const firebaseRepository = new SlackAppRepository(slackAppAuth, slackInfoDB);
+          firebaseRepository.storeFirestoreData(data);
+          resolve();
+        }
+      });
+    },
+    fetchInstallation: async (
+      query: InstallationQuery<boolean>,
+      logger?: Logger | undefined
+    ) => {
+      return new Promise<Installation<"v1" | "v2", boolean>>(
+        (resolve, reject) => {
+          if (
+            query.isEnterpriseInstall &&
+            query.enterpriseId !== undefined
+          ) {
+            // OrG 全体へのインストール情報の参照
+            logger?.debug("Fetching installation for OrG");
+          }
+          if (query.teamId !== undefined) {
+            logger?.debug("Fetching installation for workspace");
+          }
+        }
+      );
+    },
+  },
   installUrlOptions: {
     scopes: [
       "chat:write",
@@ -36,6 +92,7 @@ app.get('/slack/install', async (req, res) => {
 
 app.get('/slack/oauth_redirect', (req, res) => {
   installer.handleCallback(req, res);
+  installer.installationStore
 });
 
 
