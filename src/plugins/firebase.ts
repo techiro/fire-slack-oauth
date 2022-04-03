@@ -1,7 +1,7 @@
 // Initialize Cloud Firestore through Firebase
 import { initializeApp, getApps } from "@firebase/app";
 import { getFirestore, Firestore } from "@firebase/firestore";
-import { Auth, getAuth } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY!,

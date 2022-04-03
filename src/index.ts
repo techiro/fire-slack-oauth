@@ -41,8 +41,9 @@ const installer = new InstallProvider({
             userToken: installation.user.token ?? "",
             userId: installation.user.id,
           };
+          logger?.debug(data);
           const firebaseRepository = new SlackAppRepository(slackAppAuth, slackInfoDB);
-          firebaseRepository.storeFirestoreData(data);
+          await firebaseRepository.storeFirestoreData(data);
           resolve();
         }
       });
@@ -94,14 +95,14 @@ app.get('/slack/install', async (req, res) => {
 
 app.get('/slack/oauth_redirect', (req, res) => {
   installer.handleCallback(req, res);
-  installer.installationStore
+  installer.installationStore;
 });
 
 
-//redicrect
-app.get('slack/oauth_redirect', function (req, res, next) {
-  res.send('<h1>Redirect</h1>');
-});
+// //redicrect
+// app.get('slack/oauth_redirect', function (req, res, next) {
+//   res.send('<h1>Redirect</h1>');
+// });
 
 
 //API
