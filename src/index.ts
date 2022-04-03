@@ -9,7 +9,7 @@ app.get('slack/oauth_redirect', function (req, res, next) {
 
 //install
 app.get('/slack/install', async (req, res) => {
-  res.send('<h1>Install</h1>\n<a href="https://google.com/">サンプルサイトへ飛びます。</a>');
+  res.send('<h1>Install</h1>\n<a href="https://google.com/">サンプルサイトへ飛びます。</a>' + process.env.TEST);
 });
 
 //API
