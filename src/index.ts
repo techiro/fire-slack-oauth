@@ -1,6 +1,5 @@
 import express from 'express';
-const app: express.Express = express();
-
+import functions from 'firebase-functions';
 import { Installation, InstallationQuery, InstallProvider, Logger } from '@slack/oauth';
 
 // Error: Cannot find module 'model/slackError'
@@ -9,6 +8,8 @@ import { NoWorkSpaceError } from 'model/slackError';
 import { SlackAppRepository } from 'repository/slackAppRepository';
 import { slackAppAuth, slackInfoDB } from 'plugins/firebase';
 
+
+const app: express.Express = express();
 // initialize the installProvider
 const installer = new InstallProvider({
   clientId: process.env.SLACK_CLIENT_ID!,
