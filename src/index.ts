@@ -113,7 +113,7 @@ app.get('/api/:memberId', function(req,res,next){
   res.json(data);
 });
 
-// export const firebaseApp = functions.https.onRequest(app);
+
 app.listen(3000, function () {
   console.log("Start Express on port 3000.");
 });

@@ -10,8 +10,7 @@
     "clean": "rimraf dist/*",
     "tsc": "tsc",
     "build": "npm-run-all clean tsc",
-    "serve": "ts-node -r tsconfig-paths/register --require dotenv/config dist/index.js",
-    "start": "npm-run-all build serve",
+    "start": "node .",
     "check-types": "tsc --noEmit",
     "eslint": "eslint src/**/*.ts",
     "eslint:fix": "eslint src/**/*.ts --fix",
@@ -40,7 +39,6 @@
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "firebase": "^9.6.10",
-    "firebase-functions": "^3.19.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
     "ts-node": "^10.7.0"
