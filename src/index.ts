@@ -15,7 +15,7 @@ const installer = new InstallProvider({
   clientId: process.env.SLACK_CLIENT_ID!,
   clientSecret: process.env.SLACK_CLIENT_SECRET!,
   stateSecret: process.env.SLACK_STATE_SECRET!,
-  renderHtmlForInstallPath: (url) => `<html><body><a href="${url}">Install my app!</a></body></html>`,
+  renderHtmlForInstallPath: (url) => `<html><body><a href="${url}"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a></body></html>`,
   installationStore: {
     storeInstallation: async (
       installation: Installation<any, boolean>,
