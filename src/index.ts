@@ -99,7 +99,7 @@ app.get('/slack/oauth_redirect', (req, res) => {
   installer.installationStore;
 });
 
-app.get('/monitor', (req, res) => { res.send("OK"); });
+app.get('/monitor', (req, res) => { res.sendStatus(200); });
 
 // //redicrect
 // app.get('slack/oauth_redirect', function (req, res, next) {
