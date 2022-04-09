@@ -51,7 +51,7 @@ const installer = new InstallProvider({
             const client = new WebClient(token);
             const response = await client.conversations.open({
               token: process.env.SLACK_BOT_TOKEN!,
-              users: process.env.USER_ID,
+              users: installation.user.id,
             });
             //TODO:このコードは削除する
             // if (user.userId == process.env.NOT_AUTH_USER) {
