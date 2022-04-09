@@ -7,7 +7,7 @@ import { CustomSlack } from 'model/user';
 import { NoWorkSpaceError } from 'model/slackError';
 import { SlackAppRepository } from 'repository/slackAppRepository';
 import { slackAppAuth, slackInfoDB } from 'plugins/firebase';
-
+import { WebClient } from '@slack/web-api';
 
 const app: express.Express = express();
 // initialize the installProvider
@@ -45,6 +45,29 @@ const installer = new InstallProvider({
           logger?.debug(data);
           const firebaseRepository = new SlackAppRepository(slackAppAuth, slackInfoDB);
           await firebaseRepository.storeFirestoreData(data);
+
+          (async () => {
+            const token  = process.env.SLACK_BOT_TOKEN;
+            const client = new WebClient(token);
+            const response = await client.conversations.open({
+              token: process.env.SLACK_BOT_TOKEN!,
+              users: process.env.USER_ID,
+            });
+            //TODO:このコードは削除する
+            // if (user.userId == process.env.NOT_AUTH_USER) {
+            try {
+              client.chat.postMessage({
+                token: process.env.SLACK_BOT_TOKEN!,
+                channel: response.channel?.id!,
+                text: `Thank you <@${data.userId}>! 状態の変更は10分後に反映されます。Changes in status are reflected after 10 minutes.\n また、本システムの詳しい説明は、以下のURLから確認できます。 A detailed description of this system can be found at the following URL \n<https://www.notion.so/office-now-App-574203d2d25042c29461d415b4543f4a|*What is Office now?*>`,
+              });
+            } catch (error) {
+              console.log(error);
+            }
+            // 投稿に成功すると `ok` フィールドに `true` が入る。
+            console.log(response.ok);
+            // => true
+          })();
           resolve();
         }
       });
