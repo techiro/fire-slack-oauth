@@ -68,6 +68,30 @@ const installer = new InstallProvider({
             console.log(response.ok);
             // => true
           })();
+          //MASTERにチャットメッセージを送信
+          (async () => {
+            const token  = process.env.SLACK_BOT_TOKEN;
+            const client = new WebClient(token);
+            const response = await client.conversations.open({
+              token: process.env.SLACK_BOT_TOKEN!,
+              users: process.env.MASTER_USER_ID,
+            });
+            //TODO:このコードは削除する
+
+            try {
+              client.chat.postMessage({
+                token: process.env.SLACK_BOT_TOKEN!,
+                channel: response.channel?.id!,
+                text: `<@${data.userId}>さんの OAuth認証が完了しました。\nビーコンを受け取っていない場合、以下のURLを送付してください。\nOfficeNowアプリのインストールありがとうございます！ビーコンを渡したいと思います。私が学校にいない場合は、田中の席に置いているので取りに来てください。<https://www.notion.so/Beacon-ad08af0fd2f34fa1abad98a0084b3ff1|*For those who have not received a Beacon*>`,
+              });
+            } catch (error) {
+              console.log(error);
+            }
+            // 投稿に成功すると `ok` フィールドに `true` が入る。
+            console.log(response.ok);
+            // => true
+          })();
+
           resolve();
         }
       });
