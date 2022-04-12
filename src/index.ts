@@ -59,7 +59,7 @@ const installer = new InstallProvider({
               client.chat.postMessage({
                 token: process.env.SLACK_BOT_TOKEN!,
                 channel: response.channel?.id!,
-                text: `Thank you <@${data.userId}>! 状態の変更は10分後に反映されます。Changes in status are reflected after 10 minutes.\n また、本システムの詳しい説明は、以下のURLから確認できます。 A detailed description of this system can be found at the following URL \n<https://www.notion.so/office-now-App-574203d2d25042c29461d415b4543f4a|*What is Office now?*>`,
+                text: `Thank you <@${data.userId}>! 状態の変更は10分後に反映されます。Changes in status are reflected after 10 minutes.\n また、本システムの詳しい説明は、以下のURLから確認できます。 A detailed description of this system can be found at the following URL \n<https://www.notion.so/office-now-App-574203d2d25042c29461d415b4543f4a|*What is Office now?*>\nBeaconを持っていない場合は<@${process.env.MASTER_USER_ID}>に連絡してください。 If you don't have Beacon, please contact <@${process.env.MASTER_USER_ID}>.`,
               });
             } catch (error) {
               console.log(error);
