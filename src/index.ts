@@ -125,6 +125,10 @@ const installer = new InstallProvider({
       "groups:write",
       "im:write",
       "mpim:write",
+      "channels:read",
+      "groups:read",
+      "mpim:read",
+      "im:read",
     ],
     userScopes: [
       "channels:write",
@@ -133,6 +137,10 @@ const installer = new InstallProvider({
       "groups:write",
       "users.profile:write",
       "users.profile:read",
+      "channels:read",
+      "groups:read",
+      "mpim:read",
+      "im:read",
     ]
   }
 
